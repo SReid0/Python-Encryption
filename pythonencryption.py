@@ -59,9 +59,10 @@ def main():
 
         # Create email using MIME multipart
         # 'To' field uses the previously stored input for recipient_email
+        # 'From' email intentionally left blank for security
 
             message = MIMEMultipart()
-            message['From'] = 'trhssucks@gmail.com'
+            message['From'] = 'XXX'
             message['To'] = recipient_email
             message['Subject'] = 'Encrypted message and key'
 
@@ -79,12 +80,12 @@ def main():
 
         # Send the email using smtplib
         # 465 is used since 587 failed
-        # Google did the fucky wucky and I had to make an app password to make this entire email thing work
+        # app_password and email intentionally left blank for security
 
             with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
-                app_password = "pkktqybhcrypuzzu"
-                server.login('trhssucks@gmail.com', app_password)
-                server.sendmail('trhssucks@gmail.com', recipient_email, message.as_string())
+                app_password = "XXXX"
+                server.login('XXXX', app_password)
+                server.sendmail('XXXX', recipient_email, message.as_string())
 
             print("Email sent.")
         elif send_email.lower() == 'n':
